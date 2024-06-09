@@ -14,9 +14,6 @@ public class CardGames {
 
         int result03 = win3(arr);
         System.out.println("result03===" + result03);
-
-
-
     }
 
     public static int win1(int[] arr) {
