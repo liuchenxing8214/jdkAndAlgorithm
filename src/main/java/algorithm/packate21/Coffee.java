@@ -32,7 +32,6 @@ public class Coffee {
             }
         }
         System.out.println("测试结束");
-
     }
 
     // for test
