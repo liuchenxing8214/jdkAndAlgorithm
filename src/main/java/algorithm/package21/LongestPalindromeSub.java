@@ -1,4 +1,4 @@
-package algorithm.packate21;
+package algorithm.package21;
 
 public class LongestPalindromeSub {
 

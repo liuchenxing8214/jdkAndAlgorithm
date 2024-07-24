@@ -1,4 +1,4 @@
-package algorithm.packate21;
+package algorithm.package21;
 
 import java.util.Arrays;
 import java.util.Comparator;
