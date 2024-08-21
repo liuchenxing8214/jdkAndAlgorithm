@@ -47,7 +47,7 @@ public class RightQueen_03 {
     }
 
     //优化方案:先将N皇后转化成右边是连续的N个1的整型数字,
-    //拿着一个整型值的使用装填来替换掉records的更新
+    //拿着一个整型值的使用状态来替换掉records的更新
     public static int bestSolveTotalNQueens(int n) {
         //32位以上数据太大了
         if (n < 1 || n > 32) {
