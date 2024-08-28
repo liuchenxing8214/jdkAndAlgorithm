@@ -2,15 +2,22 @@ package algorithm.package05;
 
 public class BiggerThanRightTwice_04 {
 
-
-    public static int biggerTwice(int[] arr) {
-        if (arr == null || arr.length < 2) {
+    public static void main(String[] args) {
+        int[] arr = {2147483647, 2147483647, 2147483647, 2147483647, 2147483647, 2147483647};
+        System.out.println(reversePairs(arr));
+    }
+    public static int reversePairs(int[] nums) {
+        if (nums == null || nums.length < 2) {
             return 0;
         }
-        return process(arr, 0, arr.length - 1);
+        long[] longArr =  new long[nums.length];
+        for(int i=0;i<nums.length;i++){
+            longArr[i] = nums[i];
+        }
+        return process(longArr, 0, nums.length - 1);
     }
 
-    public static int process(int[] arr, int L, int R) {
+    public static int process(long[] arr, int L, int R) {
         //边界条件，只有一个数时候，是不用排序的
         if (L == R) {
             return 0;
@@ -21,20 +28,20 @@ public class BiggerThanRightTwice_04 {
                 + merge(arr, L, Mid, R);
     }
 
-    public static int merge(int[] arr, int L, int Mid, int R) {
+    public static int merge(long[] arr, int L, int Mid, int R) {
         //在merge和sort之前将满足数据的数都计算出来
         int res = 0;
         int rightIndex = Mid + 1; //右组数第一个数据的下标
         for (int i = L; i <= Mid; i++) {
             //右组数尽可能往右扩，扩到第一个不满足的条件停下来
             //右组数没有越界,而且左组数 >= 右组数 *2
-            while (rightIndex <= R && arr[i] > arr[rightIndex] << 1) {
+            while (rightIndex <= R && arr[i] > (arr[rightIndex] << 1)) {
                 rightIndex++;
             }
             res += rightIndex - Mid - 1;
         }
         //辅助数组长度
-        int[] help = new int[R - L + 1];
+        long[] help = new long[R - L + 1];
         int p1 = L;
         int p2 = Mid + 1;
         // （I）左组数和右组数谁小先拷贝谁到辅助数组中去
@@ -124,7 +131,7 @@ public class BiggerThanRightTwice_04 {
     }
 
     // for test
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         int testTime = 500000;
         int maxSize = 100;
         int maxValue = 100;
@@ -140,5 +147,5 @@ public class BiggerThanRightTwice_04 {
             }
         }
         System.out.println("测试结束");
-    }
+    }*/
 }
