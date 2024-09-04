@@ -13,13 +13,13 @@ public class HeapSort_03 {
         }
         // O(N*logN)
 
-/*        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++) {
             heapInsert(arr, i);
-        }*/
-        //O(N)  从下网上依次将第i个节点调成大根堆
-        for (int i = N - 1; i >= 0; i--) {
-            heapIfy(arr,i,N);
         }
+        //O(N)  从下网上依次将第i个节点调成大根堆
+/*        for (int i = N - 1; i >= 0; i--) {
+            heapIfy(arr,i,N);
+        }*/
         int heapSize = N;
         //0位置和N-1位置作交换,最大值和堆结构断开
         //N-1位置上是最大值,最大值和堆结构断开
