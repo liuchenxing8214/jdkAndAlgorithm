@@ -8,7 +8,7 @@ public class Test02 {
         heap.push(cur);
         for (EveryStepShowBoss_03.Customer customer : heap.getAllElements()) {
             System.out.println(heap.contains(cur));
-            cur.setBuyNum(100);
+           // cur.setBuyNum(100);
             System.out.println(heap.contains(customer));
            // heap.push(customer);
             System.out.println("=====");

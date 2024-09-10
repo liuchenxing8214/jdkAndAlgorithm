@@ -83,14 +83,15 @@ public class HeapGreater<T> {
         if (obj != last) {
             map.put(last, index);
             heap.set(index, last);
+            //再index位置重新调整堆结构
+            realign(last);
         }
-        //再index位置重新调整堆结构
-        realign(last);
+
     }
 
     public void realign(T obj) {
-        heapIfy(map.get(obj));
-        heapInsert(map.get(obj));
+            heapIfy(map.get(obj));
+            heapInsert(map.get(obj));
     }
 
 
@@ -98,8 +99,8 @@ public class HeapGreater<T> {
      * 将新加的节点不断向下移动，直到不能移动为止。
      */
     public void heapIfy(int index) {
-        while (index < heapSize) {
-            int leftChild = index * 2 + 1;
+        int leftChild = index * 2 + 1;
+        while (leftChild < heapSize) {
             //假如右子节点存在(找到如论是降序还是升序过程中那个最想要的下标)
             //如果是小根堆,找的最小值的那个下标,
             //如果是大根堆,找的是最大值的那个下标,
@@ -118,6 +119,7 @@ public class HeapGreater<T> {
             swap(index, best);
             //当前节点指向下沉的那个位置【当前节点指向那个最想要去的那个位置】
             index = best;
+            leftChild = index * 2 + 1;
         }
     }
 

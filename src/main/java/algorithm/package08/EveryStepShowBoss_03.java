@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+
 /**
  * 手动改写手写堆
  */
@@ -41,10 +42,10 @@ public class EveryStepShowBoss_03 {
             //(I)用户的购买数量不为0,用户发生退货事件,
             //(II)用户的购买数量不为0,用户发生购买事件,
             //(III)用户的购买数量为0,用户发生购买事件,【这中情况下是没有用户,所以需要初始化】|【新用户,在候选区和得奖区都不存在这个用户】
-            //(a)购买数量为0,第一种情况是用户首次进来购买事件
-            //(b)购买数量为0,第二种情况是用户先发生过购买事件,接着发生过退货事件
+                  //(a)购买数量为0,第一种情况是用户首次进来购买事件
+                   //(b)购买数量为0,第二种情况是用户先发生过购买事件,接着发生过退货事件
             Customer customer = map.get(id);
-            if (eventFlag && map.containsKey(id)) {
+            if (eventFlag && !map.containsKey(id)) {
                 customer = new Customer(id, 0, 0);
             }
             if (eventFlag) {
@@ -159,7 +160,7 @@ public class EveryStepShowBoss_03 {
     }
 
 
-    @lombok.Data
+
     public static class Customer {
         private Integer id;        //用户id
         private Integer buyNum;    //用户购买商品数量
@@ -170,10 +171,6 @@ public class EveryStepShowBoss_03 {
             this.buyNum = buyNum;
             this.enterTime = enterTime;
         }
-    }
-
-    public static void main(String[] args) {
-        bestTopK();
     }
 
 
@@ -220,10 +217,10 @@ public class EveryStepShowBoss_03 {
             //(I)用户的购买数量不为0,用户发生退货事件,
             //(II)用户的购买数量不为0,用户发生购买事件,
             //(III)用户的购买数量为0,用户发生购买事件,【这中情况下是没有用户,所以需要初始化】|【新用户,在候选区和得奖区都不存在这个用户】
-            //(a)购买数量为0,第一种情况是用户首次进来购买事件
-            //(b)购买数量为0,第二种情况是用户先发生过购买事件,接着发生过退货事件
+               //(a)购买数量为0,第一种情况是用户首次进来购买事件
+               //(b)购买数量为0,第二种情况是用户先发生过购买事件,接着发生过退货事件
             Customer customer = map.get(id);
-            if (eventFlag && map.containsKey(id)) {
+            if (eventFlag && !map.containsKey(id)) {
                 customer = new Customer(id, 0, 0);
             }
             int buyNum = 0;
@@ -248,6 +245,7 @@ public class EveryStepShowBoss_03 {
                     map.remove(id);
                     candidateHeap.remove(customer);
                 } else {
+                    customer.buyNum = buyNum;
                     candidateHeap.realign(customer);
                 }
             } else {
@@ -255,6 +253,7 @@ public class EveryStepShowBoss_03 {
                     map.remove(id);
                     prizeHeap.remove(customer);
                 } else {
+                    customer.buyNum = buyNum;
                     prizeHeap.realign(customer);
                 }
             }
@@ -285,7 +284,7 @@ public class EveryStepShowBoss_03 {
             }
         }
 
-        public  List<Integer> byCustomerList() {
+        public List<Integer> byCustomerList() {
             List<Integer> idList = new ArrayList<>();
             for (Customer customer : prizeHeap.getAllElements()) {
                 idList.add(customer.id);
@@ -340,6 +339,40 @@ public class EveryStepShowBoss_03 {
         }
         return true;
     }
+
+
+/*    public static void main(String[] args) {
+        int maxValue = 10;
+        int maxLen = 100;
+        int maxK = 6;
+        int testTimes = 100000;
+        System.out.println("测试开始");
+        for (int i = 0; i < testTimes; i++) {
+            Data testData = randomData(maxValue, maxLen);
+            int k = (int) (Math.random() * maxK) + 1;
+            int[] arr = testData.arr;
+            boolean[] op = testData.op;
+            List<List<Integer>> ans1 = topK(arr, op, k);
+            List<List<Integer>> ans2 = AwardStructure.bestTopK(arr, op, k);
+            if (!sameAnswer(ans1, ans2)) {
+                for (int j = 0; j < arr.length; j++) {
+                    System.out.println(arr[j] + " , " + op[j]);
+                }
+                System.out.println(k);
+                System.out.println(ans1);
+                System.out.println(ans2);
+                System.out.println("出错了！");
+                break;
+            }
+        }
+        System.out.println("测试结束");
+    }*/
+
+public static void main(String[] args) {
+    int[] arr = {6,6,9,2,7,5,9,2,4,2};
+    boolean[] ops ={true,true,false,true,false,false,false,true,false,true};
+    System.out.println(AwardStructure.bestTopK(arr,ops,1));
+}
 
 
 }
