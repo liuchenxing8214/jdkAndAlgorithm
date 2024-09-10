@@ -42,8 +42,8 @@ public class EveryStepShowBoss_03 {
             //(I)用户的购买数量不为0,用户发生退货事件,
             //(II)用户的购买数量不为0,用户发生购买事件,
             //(III)用户的购买数量为0,用户发生购买事件,【这中情况下是没有用户,所以需要初始化】|【新用户,在候选区和得奖区都不存在这个用户】
-                  //(a)购买数量为0,第一种情况是用户首次进来购买事件
-                   //(b)购买数量为0,第二种情况是用户先发生过购买事件,接着发生过退货事件
+            //(a)购买数量为0,第一种情况是用户首次进来购买事件
+            //(b)购买数量为0,第二种情况是用户先发生过购买事件,接着发生过退货事件
             Customer customer = map.get(id);
             if (eventFlag && !map.containsKey(id)) {
                 customer = new Customer(id, 0, 0);
@@ -160,7 +160,6 @@ public class EveryStepShowBoss_03 {
     }
 
 
-
     public static class Customer {
         private Integer id;        //用户id
         private Integer buyNum;    //用户购买商品数量
@@ -191,7 +190,7 @@ public class EveryStepShowBoss_03 {
             this.limitNum = limitNum;
         }
 
-        public static List<List<Integer>> bestTopK(int[] arr, boolean[] op, int k) {
+        public static List<List<Integer>> bestTopK(int[] arr, boolean[] op, int k)  {
             AwardStructure awardStructure = new AwardStructure(new CandidateComparator(), new PrizeComparator(), k);
             //收集每个时刻的获奖名单集合
             List<List<Integer>> ans = new ArrayList<>();
@@ -211,14 +210,15 @@ public class EveryStepShowBoss_03 {
             //(IV)用户的购买数量为0,用户发生退货事件,
             //规则一:如果现在购买商品数为0，而且发生了退货事件,
             //让该用户的在该时刻的操作无效，即获奖名单和上个事件获奖名单是一样的
+            //System.out.println("id==="+id+"eventFlag==="+eventFlag+" ,time==="+time+" ,limitNum=="+limitNum);
             if (!eventFlag && !map.containsKey(id)) {
                 return;
             }
             //(I)用户的购买数量不为0,用户发生退货事件,
             //(II)用户的购买数量不为0,用户发生购买事件,
             //(III)用户的购买数量为0,用户发生购买事件,【这中情况下是没有用户,所以需要初始化】|【新用户,在候选区和得奖区都不存在这个用户】
-               //(a)购买数量为0,第一种情况是用户首次进来购买事件
-               //(b)购买数量为0,第二种情况是用户先发生过购买事件,接着发生过退货事件
+            //(a)购买数量为0,第一种情况是用户首次进来购买事件
+            //(b)购买数量为0,第二种情况是用户先发生过购买事件,接着发生过退货事件
             Customer customer = map.get(id);
             if (eventFlag && !map.containsKey(id)) {
                 customer = new Customer(id, 0, 0);
@@ -341,11 +341,12 @@ public class EveryStepShowBoss_03 {
     }
 
 
-/*    public static void main(String[] args) {
+
+    public static void main(String[] args) {
         int maxValue = 10;
         int maxLen = 100;
         int maxK = 6;
-        int testTimes = 100000;
+        int testTimes = 1000;
         System.out.println("测试开始");
         for (int i = 0; i < testTimes; i++) {
             Data testData = randomData(maxValue, maxLen);
@@ -366,13 +367,21 @@ public class EveryStepShowBoss_03 {
             }
         }
         System.out.println("测试结束");
-    }*/
+    }
 
-public static void main(String[] args) {
+
+
+/*public static void main(String[] args) {
     int[] arr = {6,6,9,2,7,5,9,2,4,2};
     boolean[] ops ={true,true,false,true,false,false,false,true,false,true};
     System.out.println(AwardStructure.bestTopK(arr,ops,1));
-}
+}*/
+
+/*    public static void main(String[] args) {
+        int[] arr = {5,0,0,5,0};
+        boolean[] ops ={true,false,false,true,true};
+        System.out.println(AwardStructure.bestTopK(arr,ops,6));
+    }*/
 
 
 }

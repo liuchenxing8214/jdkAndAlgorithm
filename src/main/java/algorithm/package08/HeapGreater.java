@@ -132,9 +132,9 @@ public class HeapGreater<T> {
         //如果是小根堆,a-b<0,a在前,b在后面，后面所有进来的数比a小都要和互换。
         //假如是大根堆,b-a<0,b在前,a在后面,由于现在是小的b在前，由于要转成大根堆，b和a要互换。
         while (comp.compare(heap.get(index), heap.get((index - 1) / 2)) < 0) {
-            swap(index, index - 1 / 2);
+            swap(index, (index - 1) / 2);
             //当前节点和父节点交换位置之后，当前节点指向父节点。
-            index = index - 1 / 2;
+            index = (index - 1)/ 2;
         }
     }
 
