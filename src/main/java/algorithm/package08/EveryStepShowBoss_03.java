@@ -175,7 +175,7 @@ public class EveryStepShowBoss_03 {
 
     //对第二种方法,用堆结构进行优化
     public static class AwardStructure {
-        //记录每一个唯一的用户id对应的customer实例
+        //记录每一个唯一的用户id对应的customer实例【记录用户购买商品的记录】
         private HashMap<Integer, Customer> map;
         private HeapGreater<Customer> candidateHeap;
         private HeapGreater<Customer> prizeHeap;
