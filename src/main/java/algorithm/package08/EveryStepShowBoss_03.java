@@ -346,7 +346,7 @@ public class EveryStepShowBoss_03 {
         int maxValue = 10;
         int maxLen = 100;
         int maxK = 6;
-        int testTimes = 1000;
+        int testTimes = 3000000;
         System.out.println("测试开始");
         for (int i = 0; i < testTimes; i++) {
             Data testData = randomData(maxValue, maxLen);

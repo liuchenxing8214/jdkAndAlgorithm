@@ -33,7 +33,7 @@ public class BinarySearch {
 /*        int arr[] = {1, 8, 10, 89, 1000, 1000, 1234};
         int resIndex = binarySearch(arr, 0, arr.length - 1, 1000);
         System.out.println("resIndex=" + resIndex);*/
-        int arr[] = {1, 8, 10, 89, 90, 1000, 1000, 1000, 1000, 1000, 1000, 1234};
+        int arr[] = {1, 8, 10, 89, 90, 1000, 1000, 1000,1000,1000,1000,1000, 1000, 1000, 1234};
         List indexList = binarySearch2(arr, 0, arr.length - 1, 1000);
         System.out.println("indexList=" + indexList);
     }
@@ -66,7 +66,7 @@ public class BinarySearch {
                 if (leftIndex < 0 || arr[leftIndex] != value) {
                     break;
                 }
-                indexList.add(arr[leftIndex]);
+                indexList.add(leftIndex);
                 leftIndex--;
             }
             indexList.add(mid);
