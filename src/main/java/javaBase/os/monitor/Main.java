@@ -22,7 +22,7 @@ public class Main {
 
         ExecutorService threadPool=new ThreadPoolExecutor(2,5,
                 1L, TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(3),
+                new ArrayBlockingQueue<>(3),
                 Executors.defaultThreadFactory(),
                 new ThreadPoolExecutor.AbortPolicy());
     }
