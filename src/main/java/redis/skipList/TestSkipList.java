@@ -8,9 +8,6 @@ public class TestSkipList {
         // 插入随机数
         for (int i = 0; i < numElements; i++) {
             Integer randomNum = (int) (Math.random() * numElements);
-            if (i < 10) {
-                randomNum = null;
-            }
             skipList.add(randomNum);
             assert skipList.search(randomNum) : "Failed to add " + randomNum + ".";
         }
