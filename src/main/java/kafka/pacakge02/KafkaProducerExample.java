@@ -19,7 +19,7 @@ public class KafkaProducerExample {
         // 创建Kafka生产者
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 
-        String topic = "my-topic02";
+        String topic = "my-topic03";
         for (int i = 0; i < 10; i++) {
             String key = "key" + (i % 3); // 确保相同的键，保证消息进入相同的分区
             String value = "message-" + i;

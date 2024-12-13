@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Properties;
 
 public class KafkaConsumerExample {
-    private static final String TOPIC = "my-topic02";
+    private static final String TOPIC = "my-topic03";
     private static final String GROUP_ID = "my-group02";
 
     public static void main(String[] args) {
