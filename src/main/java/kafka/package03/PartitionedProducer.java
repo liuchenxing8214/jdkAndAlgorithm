@@ -1,4 +1,4 @@
-package kafka.pageage03;
+package kafka.package03;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
